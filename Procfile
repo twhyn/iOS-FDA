@@ -1,0 +1,1 @@
+web: foodDeliveryApp.wsgi --log-file -

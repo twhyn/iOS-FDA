@@ -14,3 +14,7 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "foodDeliveryApp.settings")
 
 application = get_wsgi_application()
+
+# whitenoise package to serve static files on Heroku
+from whitenoise.django import DjangoWhiteNoise
+application = DjangoWhiteNoise(application)
