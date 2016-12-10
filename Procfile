@@ -1,1 +1,1 @@
-web: foodDeliveryApp.wsgi --log-file -
+web: gunicorn foodDeliveryApp.wsgi --log-file -
