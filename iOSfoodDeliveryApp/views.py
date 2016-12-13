@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from iOSfoodDeliveryApp.forms import UserForm, UserFormUpdate, RestaurantForm, MealForm
+
+from iOSfoodDeliveryApp.forms import UserForm, RestaurantForm, UserFormUpdate, MealForm
 from django.contrib.auth import authenticate, login
+
 from django.contrib.auth.models import User
-from iOSfoodDeliveryApp.models import Meal
+from iOSfoodDeliveryApp.models import Meal, Order, Driver
 
 # homepage
 def home(request):
