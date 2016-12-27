@@ -36,6 +36,7 @@ class Driver(models.Model):
   avatar  = models.CharField(max_length=500)
   phone   = models.CharField(max_length=500, blank=True)
   address = models.CharField(max_length=500, blank=True)
+  location = models.CharField(max_length=500, blank=True)
 
   def __str__(self):
     # get_full_name from user model of django
@@ -72,6 +73,9 @@ class Order(models.Model):
   status      = models.IntegerField(choices = STATUS_CHOICES)
   created_at  = models.DateTimeField(default = timezone.now)
   picked_at   = models.DateTimeField(blank = True, null = True)
+
+  def __str__(self):
+        return str(self.id)
 
 class OrderDetails(models.Model):
     order = models.ForeignKey(Order, related_name='order_details')

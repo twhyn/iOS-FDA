@@ -30,16 +30,26 @@ urlpatterns = [
     url(r'^restaurant/meal/edit/(?P<meal_id>\d+)/$', views.restaurant_edit_meal, name = 'restaurant-edit-meal'),
 
     url(r'^restaurant/order/$', views.restaurant_order, name = 'restaurant-order'),
+    url(r'^restaurant/customer/$', views.restaurant_customer, name = 'restaurant-customer'),
+    url(r'^restaurant/driver/$', views.restaurant_driver, name = 'restaurant-driver'),
     url(r'^restaurant/report/$', views.restaurant_report, name = 'restaurant-report'),
-    # convert-token (sign in/up)
-    # revoke-token (sign out)
 
     url(r'^api/restaurant/order/notification/(?P<last_request_time>.+)/$', apis.restaurant_order_notification),
 
-    # customer APIs
+    # CUSTOMER APIs
     url(r'^api/customer/restaurants/$', apis.customer_get_restaurants),
     url(r'^api/customer/meals/(?P<restaurant_id>\d+)/$', apis.customer_get_meals),
     url(r'^api/customer/order/add/$', apis.customer_add_order),
     url(r'^api/customer/order/latest/$', apis.customer_get_latest_order),
+    url(r'^api/customer/driver/location/$', apis.customer_driver_location),
+
+    # DRIVERS APIs
+    url(r'^api/driver/orders/ready/$', apis.driver_get_ready_orders),
+    url(r'^api/driver/order/pick/$', apis.driver_pick_order),
+    url(r'^api/driver/order/latest/$', apis.driver_get_latest_order),
+    url(r'^api/driver/order/complete/$', apis.driver_complete_order),
+    url(r'^api/driver/revenue/$', apis.driver_get_revenue),
+    url(r'^api/driver/location/update/$', apis.driver_update_location),
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

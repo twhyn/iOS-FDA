@@ -32,6 +32,8 @@
 
   {% url 'restaurant-order' as restaurant_order_url %}
   {% url 'restaurant-meal' as restaurant_meal_url %}
+  {% url 'restaurant-customer' as restaurant_customer_url %}
+  {% url 'restaurant-driver' as restaurant_driver_url %}
   {% url 'restaurant-report' as restaurant_report_url %}
   {% url 'restaurant-account' as restaurant_account_url %}
 
@@ -45,11 +47,14 @@
 
   <div class="list-group">
     <span class="text-uppercase">Dashboard</span>
+
     <a href="{% url 'restaurant-order' %}"
         class="list-group-item
         {% if request.path == restaurant_order_url %}
         active
-        {% endif %}" >Orders</a>
+        {% endif %}" > Orders
+        <span class="badge"></span>
+    </a>
     <a href="{% url 'restaurant-meal' %}"
         class="list-group-item
         {% if request.path == restaurant_meal_url %}
@@ -60,6 +65,16 @@
         {% if request.path == restaurant_report_url %}
         active
         {% endif %}">Reports</a>
+    <a href="{% url 'restaurant-customer' %}"
+        class="list-group-item
+        {% if request.path == restaurant_customer_url %}
+        active
+        {% endif %}">Customer</a>
+    <a href="{% url 'restaurant-driver' %}"
+        class="list-group-item
+        {% if request.path == restaurant_driver_url %}
+        active
+        {% endif %}">Driver</a>
 
     <span class="text-uppercase">Profile</span>
     <a href="{% url 'restaurant-account' %}"

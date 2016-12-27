@@ -179,3 +179,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social.pipeline.social_auth.load_extra_data',
     'social.pipeline.user.user_details',
 )
+
+# Stripe configuration
+STRIPE_API_KEY = os.environ['STRIPE_API_KEY']

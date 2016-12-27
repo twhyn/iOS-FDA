@@ -31,6 +31,12 @@ class MealSerializer(serializers.ModelSerializer):
 # ORDER
 class OrderCustomerSerializer(serializers.ModelSerializer):
   name = serializers.ReadOnlyField(source="user.get_full_name")
+  avatar = serializers.SerializerMethodField()
+
+  def get_avatar(self, customer):
+    request = self.context.get('request')
+    avatar_url = customer.avatar.url
+    return request.build_absolute_uri(avatar_url)
 
   class Meta:
     model = Customer
@@ -38,6 +44,12 @@ class OrderCustomerSerializer(serializers.ModelSerializer):
 
 class OrderDriverSerializer(serializers.ModelSerializer):
   name = serializers.ReadOnlyField(source="user.get_full_name")
+  avatar = serializers.SerializerMethodField()
+
+  def get_avatar(self, driver):
+    request = self.context.get('request')
+    avatar_url = driver.avatar.url
+    return request.build_absolute_uri(avatar_url)
 
   class Meta:
     model = Driver
